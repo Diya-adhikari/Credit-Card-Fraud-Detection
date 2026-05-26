@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Credit Card Fraud Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">💳 FraudDetect</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#upload">Upload</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Marquee Announcement -->
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    🚨Credit card fraud happens when someone uses another person’s card or card details without permission to buy things or get money| Credit card fraud is one of the most common types of financial crime worldwide 💻
+  </marquee>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Credit Card Fraud Detection</h1>
+      <p>Upload your transaction file and let our AI detect suspicious activity in seconds.</p>
+      <a href="#upload" class="cta-btn">Get Started 🚀</a>
+    </div>
+    <div class="hero-image">
+      <img src="{{ url_for('static', filename='fraud_banner.jpg') }}" alt="Fraud Detection Illustration">
+    </div>
+  </section>
+
+  <!-- Upload Section -->
+  <section id="upload" class="card">
+    <h2>📂 Upload CSV for Prediction</h2>
+    <form action="/predict_csv" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" accept=".csv" required>
+      <button type="submit">Run Prediction</button>
+    </form>
+    <p class="note">CSV must include columns V1–V28 and Amount. 'Time' is optional.</p>
+    <div id="loading" class="spinner" style="display:none;"></div>
+  </section>
+
+  <!-- Info Section -->
+  <section id="about" class="info-section">
+    <h2>🔎 How it Works</h2>
+    <div class="info-grid">
+      <div class="info-box">📥 Upload your dataset</div>
+      <div class="info-box">⚙️ Model preprocesses and analyzes</div>
+      <div class="info-box">📊 Results show detected frauds</div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>✨ Why Choose FraudDetect?</h2>
+    <div class="info-grid">
+      <div class="info-box">⚡ Fast Predictions</div>
+      <div class="info-box">🔐 Secure Processing</div>
+      <div class="info-box">📈 Accurate Results</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>⚡ Powered by Machine Learning | Built by Diya</p>
+  </footer>
+
+  <!-- Script for Spinner -->
+  <script>
+    document.querySelector("form").addEventListener("submit", () => {
+      document.getElementById("loading").style.display = "block";
+    });
+  </script>
+</body>
+</html>
