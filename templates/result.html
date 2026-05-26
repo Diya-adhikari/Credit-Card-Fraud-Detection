@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">💳 FraudDetect</div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('index') }}">Home</a></li>
+      <li><a href="#summary">Results</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero small-hero">
+    <div class="hero-content">
+      <h1>🔍 Prediction Summary</h1>
+      <p class="subtitle">Here are the results from your uploaded transaction file.</p>
+    </div>
+  </section>
+
+  <!-- Results Card -->
+  <section id="summary" class="card results-card">
+    <h2>📊 Results Overview</h2>
+    <div class="results-grid">
+      <div class="result-box">
+        <h3>Total Transactions</h3>
+        <p id="total-count">{{ total }}</p>
+      </div>
+      <div class="result-box">
+        <h3>Fraudulent Transactions Detected</h3>
+        <p id="fraud-count">{{ fraud_count }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Animated Progress Bar -->
+  <section class="progress-section">
+    <h2>📈 Fraud Ratio</h2>
+    <div class="progress-bar">
+      <div class="progress-fill" id="fraud-bar"></div>
+    </div>
+    <p id="fraud-percentage"></p>
+  </section>
+
+  <!-- Banner Image -->
+  <div class="image-box">
+    <img src="{{ url_for('static', filename='fraud_banner.jpg') }}" alt="Fraud Detection Banner">
+  </div>
+
+  <!-- Back & Download Buttons -->
+  <div class="back-btn">
+    <a class="button" href="{{ url_for('index') }}">⬅ Back to Home</a>
+    {% if download_link %}
+    <a class="button" href="{{ download_link }}">⬇ Download Results</a>
+    {% endif %}
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>⚡ Powered by Machine Learning | Built by Diya</p>
+  </footer>
+
+  <!-- Script for Animated Counter & Progress -->
+  <script>
+    const total = parseInt(document.getElementById("total-count").textContent);
+    const fraud = parseInt(document.getElementById("fraud-count").textContent);
+    const percentage = total > 0 ? Math.round((fraud / total) * 100) : 0;
+
+    document.getElementById("fraud-percentage").textContent = percentage + "% of transactions flagged as fraud";
+
+    const bar = document.getElementById("fraud-bar");
+    bar.style.width = "0%";
+    setTimeout(() => {
+      bar.style.width = percentage + "%";
+    }, 300);
+  </script>
+</body>
+</html>
