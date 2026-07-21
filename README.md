@@ -63,3 +63,96 @@ The workflow includes: data cleaning, preprocessing, model training, evaluation,
 - **Weighted Average**: Precision 1.00, Recall 0.97, F1-score 0.99  
 
 **Confusion Matrix:**
+<img width="1506" height="1402" alt="Screenshot 2026-07-20 212855" src="https://github.com/user-attachments/assets/7e78842a-40b0-4afe-b34f-d8f987d81c5b" />
+<img width="1196" height="898" alt="image" src="https://github.com/user-attachments/assets/626c7b0d-4e24-469b-8334-0ae1ac9466fc" />
+
+
+**Interpretation:**
+- The model correctly identified **90 out of 98 fraud cases** (high recall).  
+- Precision for fraud is low (0.06), meaning many false positives.  
+- This trade-off is common in fraud detection: catching fraud is prioritized over precision.  
+
+---
+
+## 📈 Reports
+- `reports/metrics.txt` contains:  
+  - Accuracy: 0.9746  
+  - ROC-AUC: 0.9714  
+  - Classification report (precision, recall, F1-score).  
+  - Confusion matrix.
+
+Logistic Regression Fraud Detection Report
+Accuracy: 0.9746
+ROC-AUC: 0.9714
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99     56864
+           1       0.06      0.92      0.11        98
+
+    accuracy                           0.97     56962
+   macro avg       0.53      0.95      0.55     56962
+weighted avg       1.00      0.97      0.99     56962
+
+Confusion Matrix:
+[[55423  1441]
+ [    8    90]]
+
+---
+
+## 🎨 Web Interface
+
+### `index.html`
+- Navigation bar with links (Home, Upload, About).  
+- Hero section with fraud awareness banner and CTA button.  
+- Upload section: CSV upload form, spinner animation.  
+- Info section: *How it works* (Upload → Preprocess → Results).  
+- Features section: Fast Predictions, Secure Processing, Accurate Results.  
+- Footer: *Powered by Machine Learning | Built by Diya*.  
+
+### `result.html`
+- Displays prediction summary.  
+- Results overview: total transactions, fraud count.  
+- Fraud ratio progress bar (animated).  
+- Banner image.  
+- Back to Home + Download Results buttons.  
+
+### `styles.css`
+- Purple gradient theme with responsive design.  
+- Styled navbar, hero section, cards, buttons.  
+- Animations: fade-in, zoom-in, spinner, progress bar.  
+- Mobile-friendly layout.  
+
+---
+
+## 📊 Visual Outputs
+- **Confusion Matrix Heatmap** → Shows predicted vs actual fraud cases.  
+- **ROC Curve** → AUC = 0.9714, strong discriminatory power.  
+- **Web UI Screenshots**:  
+  - Homepage (upload form).  
+  - Results dashboard (fraud ratio, summary, download option).  
+
+---
+
+## 🚀 Key Learnings
+- Logistic Regression achieved high recall (92%) for fraud detection, prioritizing catching fraud cases.  
+- Precision was low, reflecting false positives — a common trade-off in fraud detection.  
+- ROC-AUC score (0.97) confirms strong overall model performance.  
+- Integrating ML with Flask provides a practical, user-friendly fraud detection tool.  
+
+---
+
+## 📜 Dataset
+- Source: Kaggle Credit Card Fraud Detection dataset.  
+- Contains anonymized transaction features (`V1–V28`), `Amount`, `Time`, and `Class`.  
+
+---
+
+## 🏷️ How to Run
+1. Install dependencies:  
+   ```bash
+   pip install -r requirements.txt
+
+
+
