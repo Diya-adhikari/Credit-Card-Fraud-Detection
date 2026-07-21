@@ -46,12 +46,20 @@ The workflow includes: data cleaning, preprocessing, model training, evaluation,
   - Saved scaler (`amount_scaler.pkl`).  
 
 ### 4. 📊 Evaluation
-- **Accuracy**: 97.45%  
-- **Precision (fraud class)**: 0.0588  
-- **Recall (fraud class)**: 0.9184  
-- **F1-score (fraud class)**: 0.1105  
+
+**Logistic Regression Fraud Detection Report**
+
+- **Accuracy**: 0.9746  
 - **ROC-AUC**: 0.9714  
 
-Confusion Matrix:
+**Classification Report:**
+| Class | Precision | Recall | F1-score | Support |
+|-------|-----------|--------|----------|---------|
+| 0 (Legitimate) | 1.00 | 0.97 | 0.99 | 56,864 |
+| 1 (Fraud)      | 0.06 | 0.92 | 0.11 | 98 |
 
+- **Accuracy (overall)**: 0.97 (56,962 samples)  
+- **Macro Average**: Precision 0.53, Recall 0.95, F1-score 0.55  
+- **Weighted Average**: Precision 1.00, Recall 0.97, F1-score 0.99  
 
+**Confusion Matrix:**
